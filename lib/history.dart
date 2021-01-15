@@ -27,21 +27,43 @@ class _HistoryState extends State<History> {
         } else {
           listOfwidgets.add(
             Row(
+              // mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Prices: ${args[i]["Price"]}Rs    Discount: ${args[i]["Discount"]}% \n Discounted Price: ${args[i]["Discounted Price"]}Rs \n Saved: ${args[i]["Saved"]}Rs",
+                      "Prices: ${args[i]["Price"]}Rs    Discount: ${args[i]["Discount"]}%  ",
                       style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      "Discounted Price: ${args[i]["Discounted Price"]}Rs",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      "Saved: ${args[i]["Saved"]}Rs",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Divider(
-                      height: 10,
+                      height: 2,
                       thickness: 00,
                       color: Colors.black,
                     )
@@ -115,14 +137,6 @@ class _HistoryState extends State<History> {
                         decoration: BoxDecoration(color: Color(0xffb74093)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          // child: Text(
-                          //   "Prices: ${args[0]["Price"]}Rs    Discount: ${args[0]["Discount"]}% \n Discounted Price: ${args[0]["Discounted Price"]}Rs \n Saved: ${args[0]["Saved"]}Rs",
-                          //   style: TextStyle(
-                          //     fontSize: 18,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-
                           child: Column(
                             children: _listview(args),
                           ),
