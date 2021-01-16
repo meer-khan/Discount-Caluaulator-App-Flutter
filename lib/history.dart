@@ -18,64 +18,29 @@ class _HistoryState extends State<History> {
   Widget build(BuildContext context) {
     final List args = ModalRoute.of(context).settings.arguments;
 
-    List<Widget> _listview(args) {
-      List<Widget> listOfwidgets = [];
-      for (var i = 0; i < args.length; i++) {
-        print("Prices: ${args[i]["Price"]} \n");
-        if (args == null) {
-          return null;
-        } else {
-          listOfwidgets.add(
-            Row(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Prices: ${args[i]["Price"]}Rs    Discount: ${args[i]["Discount"]}%  ",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    Text(
-                      "Discounted Price: ${args[i]["Discounted Price"]}Rs",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    Text(
-                      "Saved: ${args[i]["Saved"]}Rs",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Divider(
-                      height: 2,
-                      thickness: 00,
-                      color: Colors.black,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          );
-        }
-      }
-      return listOfwidgets;
-    }
+    print(args);
+
+    // List<Widget> _listViewbuilder(context, args) {
+    //   List<Widget> listOfwidgets = [];
+    //   listOfwidgets.add(
+    //     ListView.builder(
+    //       itemCount: args.length,
+    //       itemBuilder: (context, index) {
+    //         return ListTile(
+    //           title: Text(
+    //               "Prices: ${args[index]["Price"]}Rs    Discount: ${args[index]["Discount"]}%  "),
+    //           subtitle: Text(
+    //             "Discounted Price: ${args[index]["Discounted Price"]}Rs"
+    //             "Saved: ${args[index]["Saved"]}Rs",
+    //           ),
+    //           trailing: Icon(Icons.delete),
+    //           isThreeLine: true,
+    //         );
+    //       },
+    //     ),
+    //   );
+    //   return listOfwidgets;
+    // }
 
     clear() {
       print("before : $args");
@@ -88,67 +53,72 @@ class _HistoryState extends State<History> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          title: Text("History"),
           actions: [
             FloatingActionButton(
               onPressed: clear,
               child: Text(
                 "Clear",
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             )
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.black,
-                  ),
-                ),
-                width: 365,
-                height: MediaQuery.of(context).size.height,
-                child: SingleChildScrollView(
-                  child: Column(
+        body: args == []
+            ? SafeArea(
+                child: Center(
+                  child: Row(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'History',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                      Text(
+                        "NO DATA RIGHT NOW ",
+                        style: TextStyle(
+                            fontSize: 40, fontStyle: FontStyle.italic),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(color: Color(0xffb74093)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: _listview(args),
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ),
+              )
+            : Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ListView.builder(
+                  itemCount: args.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(
+                        "Prices: ${args[index]["Price"]}Rs    Discount: ${args[index]["Discount"]}%",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      subtitle: Text(
+                        "Discounted Price: ${args[index]["Discounted Price"]}Rs               \n"
+                        "Saved: ${args[index]["Saved"]}Rs",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                        iconSize: 40,
+                        focusColor: Colors.blueAccent,
+                        onPressed: () {
+                          this.setState(() {
+                            args.removeAt(index);
+                          });
+                        },
+                      ),
+                      isThreeLine: true,
+                    );
+                  },
+                ),
               ),
-            ],
-          ),
-        ),
       ),
     );
   }

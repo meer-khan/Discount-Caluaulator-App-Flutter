@@ -109,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'History',
                 style: TextStyle(
                   fontSize: 18,
+                  color: Colors.white,
                 ),
               ),
             ),
