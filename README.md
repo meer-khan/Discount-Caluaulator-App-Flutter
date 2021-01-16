@@ -1,3 +1,5 @@
+#DISCOUNT CALCULATOR APP USING FLUTTER
+
 ## Features:  
 :white_check_mark:Colorful UI :sparkles:   
 :white_check_mark:Navigations  
