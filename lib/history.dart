@@ -83,7 +83,15 @@ class _HistoryState extends State<History> {
               )
             : Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: ListView.builder(
+                child: ListView.separated(
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      color: Colors.purple,
+                      thickness: 2,
+                      // endIndent: 30,
+                      // indent: 30,
+                    );
+                  },
                   itemCount: args.length,
                   itemBuilder: (context, index) {
                     return ListTile(
