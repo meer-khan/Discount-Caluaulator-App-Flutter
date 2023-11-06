@@ -1,5 +1,8 @@
 # DISCOUNT CALCULATOR APP USING FLUTTER  <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/flutter/flutter.png" height ='70' width='70' />   
 
+[![Follow me on Medium](https://img.shields.io/badge/Medium-%40meer--khan-02b875?style=for-the-badge&logo=medium)](https://medium.com/@meer-khan) [![GitHub](https://img.shields.io/badge/GitHub-%40meer--khan-181717?style=for-the-badge&logo=github)](https://github.com/meer-khan)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%40meer--khan-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/meer-khan/) 
+
 ## Features:  
 :white_check_mark:Colorful UI :sparkles:   
 :white_check_mark:Navigations  
